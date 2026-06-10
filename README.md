@@ -112,6 +112,7 @@ If you want the shortest path, start with [docs/start-here.md](docs/start-here.m
 - [docs/case-study-hermes-agent-kit.md](docs/case-study-hermes-agent-kit.md)
 - [docs/case-study-personal-brand.md](docs/case-study-personal-brand.md)
 - [docs/case-study-msme.md](docs/case-study-msme.md)
+- [docs/case-study-learner.md](docs/case-study-learner.md)
 - [docs/use-with-ai.md](docs/use-with-ai.md)
 
 ## Version 0 Scope
