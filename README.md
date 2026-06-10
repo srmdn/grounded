@@ -49,6 +49,7 @@ Grounded turns practical product judgment into reusable artifacts:
 4. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
 5. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
 6. Use [checklists/deploy.md](checklists/deploy.md) before release
+7. Use [checklists/validation.md](checklists/validation.md) after each milestone
 
 If you want the shortest path, start with [docs/start-here.md](docs/start-here.md).
 
@@ -67,6 +68,8 @@ If you want the shortest path, start with [docs/start-here.md](docs/start-here.m
 - [docs/canonical-guide.md](docs/canonical-guide.md)
 - [docs/who-this-is-for.md](docs/who-this-is-for.md)
 - [docs/example-walkthrough.md](docs/example-walkthrough.md)
+- [docs/self-use-case.md](docs/self-use-case.md)
+- [docs/case-study-hermes-agent-kit.md](docs/case-study-hermes-agent-kit.md)
 
 ## Version 0 Scope
 
@@ -85,6 +88,10 @@ Version 1 is not a big application. It is a clear system that can be read by hum
 ## Status
 
 Early project. Current public focus is establishing the core doctrine, workflow, and reusable artifacts.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
