@@ -84,7 +84,7 @@ Before execution, check:
 - rollback or reversal is known when relevant
 - basic checks pass
 
-Use [../checklists/deploy.md](../checklists/deploy.md) when software deployment is involved.
+Use [../checklists/execution.md](../checklists/execution.md). If software deployment is involved, use the software-specific additions there.
 
 ## 6. Validate the Milestone
 

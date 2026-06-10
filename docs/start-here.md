@@ -6,7 +6,7 @@ Use this repo in four steps.
 
 Fill out [templates/project-brief.md](../templates/project-brief.md).
 
-Do not skip this. A vague project will create vague implementation.
+Do not skip this. A vague direction will create vague execution.
 
 ## 2. Define a real first milestone
 
@@ -23,10 +23,13 @@ Better:
 - user can submit one form
 - data persists locally
 - one workflow is automated end to end
+- one offer becomes clear enough to present
+- one content system becomes repeatable
+- one learning path becomes structured enough to follow
 
-## 3. Ship, then review
+## 3. Execute, then review
 
-After the first milestone is live or usable, run [templates/milestone-review.md](../templates/milestone-review.md).
+After the first milestone is real or usable, run [templates/milestone-review.md](../templates/milestone-review.md).
 
 Ask:
 
@@ -39,5 +42,5 @@ Ask:
 
 Use each milestone to sharpen the next one.
 
-Grounded is not about shipping more.
+Grounded is not about producing more.
 It is about choosing better next steps.

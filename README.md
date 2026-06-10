@@ -24,7 +24,7 @@ Grounded turns practical product judgment into reusable artifacts:
 - short doctrine for staying reality-based
 - a workflow from idea to execution and iteration
 - templates for planning and decision-making
-- checklists for deployment and review
+- checklists for execution, validation, and review
 - later, a static site and lightweight app if they add real utility
 
 ## Who It Is For
@@ -87,7 +87,7 @@ That is future direction, not current identity.
 3. Read [docs/canonical-guide.md](docs/canonical-guide.md)
 4. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
 5. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
-6. Use [checklists/deploy.md](checklists/deploy.md) before release
+6. Use [checklists/execution.md](checklists/execution.md) before execution or release
 7. Use [checklists/validation.md](checklists/validation.md) after each milestone
 
 If you want the shortest path, start with [docs/start-here.md](docs/start-here.md).
