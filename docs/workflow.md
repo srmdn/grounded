@@ -2,7 +2,7 @@
 
 Grounded uses a simple loop:
 
-`idea -> scope -> milestone 1 -> deploy -> validate -> learn -> reprioritize -> next milestone`
+`idea -> scope -> milestone 1 -> execute -> validate -> learn -> reprioritize -> next milestone`
 
 ## 1. Idea
 
@@ -12,7 +12,7 @@ Start with three lines:
 - what painful problem does it solve
 - what is the smallest useful version
 
-If those lines are vague, the project is not ready.
+If those lines are vague, the work is not ready.
 
 ## 2. Scope
 
@@ -21,7 +21,7 @@ Turn the idea into a spec-lite:
 - core user flow
 - must-have features
 - not-now features
-- stack choice
+- delivery shape
 - first milestone
 
 This is planning to a solid enough state, not writing a giant document.
@@ -35,11 +35,13 @@ Examples:
 - user can submit one form successfully
 - page loads and data persists locally
 - one recurring task is automated end to end
+- one service offer becomes clear and sellable
+- one content workflow becomes repeatable
 
-## 4. Deploy
+## 4. Execute
 
-Do not treat deployment as the start of thinking.
-Use deployment as the point where verified work becomes available.
+Do not treat execution as the start of thinking.
+Use it as the point where clarified work becomes real.
 
 ## 5. Validate
 

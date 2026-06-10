@@ -9,11 +9,11 @@ This document applies the system to the project itself so the repo is not only t
 Name: grounded
 
 One-sentence description:
-An open-source system for solo builders who need clearer judgment and a more disciplined path from idea to live app.
+An open-source decision and execution system for people building something real under constraints.
 
 ## Audience
 
-Solo builders with limited budget, limited time, and too many tools.
+People building under constraints with limited budget, limited time, and too many tools.
 
 ## Problem
 
@@ -29,7 +29,7 @@ Grounded exists to help them choose the next sane step.
 
 ## Smallest Useful Version
 
-A public docs-first repo with enough practical structure that a solo builder can use it to clarify a project, define a milestone, ship something small, and review what to do next.
+A public docs-first repo with enough practical structure that a person can use it to clarify a project, define a milestone, execute something small, and review what to do next.
 
 ## Core User Flow
 
@@ -66,7 +66,7 @@ Create a genuinely usable public repo for the Grounded system.
 Definition of done:
 
 - a new visitor can understand what Grounded is
-- a solo builder can follow the flow from idea to milestone
+- a person can follow the flow from idea to milestone
 - the repo contains practical templates and checklists
 - the system is demonstrated on at least one real example
 

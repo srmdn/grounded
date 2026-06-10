@@ -1,12 +1,12 @@
 # grounded
 
-Grounded is an open-source system for solo builders who need clearer judgment, tighter execution, and less drift in the AI era.
+Grounded is an open-source decision and execution system for people building something real under constraints.
 
-The project is for people with limited budget, limited time, and too many options. Its purpose is to help builders move from idea to live app without getting trapped in fake productivity, premature complexity, or endless feature motion.
+The project is for people with limited budget, limited time, and too many options. Its purpose is to help them move from vague intention to the next sane step without getting trapped in fake productivity, premature complexity, or endless motion.
 
 ## Problem
 
-AI made software easier to produce. It did not make product decisions easier.
+AI made output easier to produce. It did not make judgment easier.
 
 That creates a new class of failure:
 
@@ -22,17 +22,19 @@ Grounded exists to counter that failure mode.
 Grounded turns practical product judgment into reusable artifacts:
 
 - short doctrine for staying reality-based
-- a workflow from idea to iteration
-- templates for project and milestone planning
+- a workflow from idea to execution and iteration
+- templates for planning and decision-making
 - checklists for deployment and review
 - later, a static site and lightweight app if they add real utility
 
 ## Who It Is For
 
 - solo builders
-- indie hackers with tight budget constraints
-- developers using AI agents but struggling with direction
-- people who ship software but want to build products that matter
+- creators building a personal brand or audience
+- MSME owners and small operators
+- professionals and experts packaging their work
+- learners building a serious path, not just consuming information
+- technical builders using AI agents but struggling with direction
 
 ## What It Is Not
 
@@ -40,6 +42,43 @@ Grounded turns practical product judgment into reusable artifacts:
 - a growth or marketing playbook
 - a full SaaS product
 - a hype layer around shipping faster
+
+## What Grounded Is Today
+
+Today, Grounded is a docs-first framework.
+
+It is not an autonomous AI product.
+It is not a chatbot.
+It is not a SaaS platform.
+
+You use it with:
+
+- your own thinking
+- an AI agent such as Codex, Claude, or ChatGPT
+- a notebook, document, or planning session
+
+Grounded provides the method.
+You or your AI tool provide the execution.
+
+## When To Use It
+
+Grounded is most useful at moments of uncertainty:
+
+- when the idea is still vague
+- when there are too many possible next steps
+- when you are tempted to overbuild
+- when you need to define a real milestone
+- when you shipped something and need to decide what comes next
+
+## What It May Become Later
+
+Grounded may later grow into:
+
+- a static site with better navigation
+- a lightweight app
+- an AI-assisted interface on top of an LLM
+
+That is future direction, not current identity.
 
 ## Start Here
 
@@ -63,6 +102,7 @@ If you want the shortest path, start with [docs/start-here.md](docs/start-here.m
 ## Core Documents
 
 - [docs/start-here.md](docs/start-here.md)
+- [docs/manifest.md](docs/manifest.md)
 - [docs/philosophy.md](docs/philosophy.md)
 - [docs/workflow.md](docs/workflow.md)
 - [docs/canonical-guide.md](docs/canonical-guide.md)
@@ -75,11 +115,12 @@ If you want the shortest path, start with [docs/start-here.md](docs/start-here.m
 
 Grounded is intentionally docs-first.
 
-Version 1 is not a big application. It is a clear system that can be read by humans, summarized by AI, and reused across real projects. If recurring patterns prove worth automating, the project can grow into a static site and small web app later.
+Version 0 is not a big application. It is a clear system that can be read by humans, summarized by AI, and reused across real projects in different domains. If recurring patterns prove worth automating, the project can grow into a static site and small web app later.
 
 ## Principles
 
 - clarity before code
+- clarity before scale
 - product pressure over builder ego
 - small milestones over grand plans
 - validation over decoration

@@ -1,6 +1,6 @@
 # Canonical Guide
 
-This is the default Grounded path from idea to first shipped version.
+This is the default Grounded path from idea to first useful version.
 
 Use it when you want structure without overplanning.
 
@@ -14,7 +14,7 @@ Write:
 
 Example:
 
-- for: solo builders with limited budget and too many AI tools
+- for: people building under constraints with too many tools and too many options
 - problem: they confuse motion with progress and drift between ideas
 - smallest useful version: a practical system that helps them choose the next sane step
 
@@ -29,7 +29,7 @@ Just define:
 - core user flow
 - must-have features
 - not-now features
-- stack choice
+- delivery shape
 - first milestone
 
 The purpose is not to sound strategic.
@@ -50,6 +50,8 @@ Better examples:
 - user can submit one form successfully
 - one workflow runs end to end
 - one recurring pain is solved in a usable way
+- one service offer becomes clear enough to present
+- one learning path becomes structured enough to follow
 
 Milestone 1 should prove that the project can become useful.
 It should not try to prove everything.
@@ -69,20 +71,20 @@ Grounded principle:
 
 If the milestone works without it, it is probably not needed yet.
 
-## 5. Deploy as a Verification Step
+## 5. Execute as a Verification Step
 
-Deployment is not the start of thinking.
+Execution is not the start of thinking.
 
-It is the moment verified work becomes available for use.
+It is the moment clarified work becomes available for use.
 
-Before deploy, check:
+Before execution, check:
 
 - scope is clear
-- environment is understood
-- rollback is known
-- basic tests or checks pass
+- constraints are understood
+- rollback or reversal is known when relevant
+- basic checks pass
 
-Use [../checklists/deploy.md](../checklists/deploy.md).
+Use [../checklists/deploy.md](../checklists/deploy.md) when software deployment is involved.
 
 ## 6. Validate the Milestone
 
@@ -93,6 +95,8 @@ Possible early signals:
 - you use it repeatedly
 - a trusted person can complete the main task
 - the workflow is materially easier than before
+- the offer or message becomes clearer
+- the confusion is materially reduced
 
 What matters is not traffic.
 What matters is whether the project is teaching you something real.

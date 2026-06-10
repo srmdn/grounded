@@ -8,11 +8,11 @@ It is not for everyone.
 
 Grounded is for people who:
 
-- build mostly alone
-- have limited budget
+- build mostly alone or with very small support
+- have limited budget, time, or attention
 - use AI tools but feel scattered
-- want a disciplined path from idea to shipped app
-- care more about usefulness than startup theater
+- want a disciplined path from idea to real execution
+- care more about usefulness than theater
 
 It is especially useful if you keep hitting the same pattern:
 
@@ -21,6 +21,15 @@ It is especially useful if you keep hitting the same pattern:
 - feature expansion
 - uncertainty about what matters
 - stalled momentum or shallow progress
+
+It can apply across:
+
+- software projects
+- personal brands
+- content systems
+- service businesses
+- expertise products
+- learning paths
 
 ## Not a Good Fit
 
@@ -44,4 +53,4 @@ Many projects fail because the builder tries to serve everyone:
 
 Grounded should stay narrow enough to stay sharp.
 
-It is for solo builders who need better judgment under constraints.
+It is for people building something real who need better judgment under constraints.

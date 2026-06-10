@@ -1,6 +1,6 @@
 # Example Walkthrough
 
-This is a worked Grounded example from vague idea to first shipped version.
+This is a worked Grounded example from vague idea to first useful version.
 
 The point is not the specific product.
 The point is how the decision process stays grounded.
@@ -45,7 +45,7 @@ Now the project is clearer.
 - analytics
 - AI integration layer
 
-### Stack choice
+### Delivery shape
 
 Docs-first repo.
 
@@ -89,7 +89,7 @@ That is correct.
 Reasonable next signals:
 
 - the creator uses Grounded on a real project
-- another solo builder can follow it without confusion
+- another person can follow it without confusion
 - the templates help narrow a vague idea into a real milestone
 
 That is enough for the next step.
