@@ -45,9 +45,10 @@ Grounded turns practical product judgment into reusable artifacts:
 
 1. Read [docs/philosophy.md](docs/philosophy.md)
 2. Read [docs/workflow.md](docs/workflow.md)
-3. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
-4. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
-5. Use [checklists/deploy.md](checklists/deploy.md) before release
+3. Read [docs/canonical-guide.md](docs/canonical-guide.md)
+4. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
+5. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
+6. Use [checklists/deploy.md](checklists/deploy.md) before release
 
 If you want the shortest path, start with [docs/start-here.md](docs/start-here.md).
 
@@ -57,6 +58,15 @@ If you want the shortest path, start with [docs/start-here.md](docs/start-here.m
 - `templates/` copyable planning artifacts
 - `checklists/` operational checklists
 - `.local/` private machine-specific notes, ignored by git
+
+## Core Documents
+
+- [docs/start-here.md](docs/start-here.md)
+- [docs/philosophy.md](docs/philosophy.md)
+- [docs/workflow.md](docs/workflow.md)
+- [docs/canonical-guide.md](docs/canonical-guide.md)
+- [docs/who-this-is-for.md](docs/who-this-is-for.md)
+- [docs/example-walkthrough.md](docs/example-walkthrough.md)
 
 ## Version 0 Scope
 
