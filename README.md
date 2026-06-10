@@ -1,44 +1,80 @@
 # grounded
 
-Grounded is an open-source operating system for solo builders in the AI era.
+Grounded is an open-source system for solo builders who need clearer judgment, tighter execution, and less drift in the AI era.
 
-It exists for builders with limited budget, time, and focus who keep getting pulled into idea drift, tool drift, and fake productivity. The goal is simple: help people choose the next sane step from idea to live app.
+The project is for people with limited budget, limited time, and too many options. Its purpose is to help builders move from idea to live app without getting trapped in fake productivity, premature complexity, or endless feature motion.
 
-## What Grounded Is
+## Problem
 
-- A docs-first open-source project
-- A practical workflow from idea to deployed app
-- A set of reusable templates and checklists
-- A future static site and small web app, if those add real utility
+AI made software easier to produce. It did not make product decisions easier.
 
-## What Grounded Is Not
+That creates a new class of failure:
 
-- Another generic startup playbook
-- A hype machine for shipping fast at all costs
-- A giant SaaS product on day one
+- more ideas than focus
+- more tools than judgment
+- more output than evidence
+- more motion than progress
 
-## Milestone 1
+Grounded exists to counter that failure mode.
 
-Milestone 1 is a usable repo with:
+## What Grounded Does
 
-- philosophy and doctrine
-- workflow from idea to iteration
-- project and milestone templates
-- deployment and review checklists
+Grounded turns practical product judgment into reusable artifacts:
 
-## Structure
+- short doctrine for staying reality-based
+- a workflow from idea to iteration
+- templates for project and milestone planning
+- checklists for deployment and review
+- later, a static site and lightweight app if they add real utility
 
-- `docs/` core thinking and workflow
-- `templates/` reusable planning artifacts
-- `checklists/` practical execution lists
+## Who It Is For
+
+- solo builders
+- indie hackers with tight budget constraints
+- developers using AI agents but struggling with direction
+- people who ship software but want to build products that matter
+
+## What It Is Not
+
+- a generic startup handbook
+- a growth or marketing playbook
+- a full SaaS product
+- a hype layer around shipping faster
+
+## Start Here
+
+1. Read [docs/philosophy.md](docs/philosophy.md)
+2. Read [docs/workflow.md](docs/workflow.md)
+3. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
+4. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
+5. Use [checklists/deploy.md](checklists/deploy.md) before release
+
+If you want the shortest path, start with [docs/start-here.md](docs/start-here.md).
+
+## Repository Map
+
+- `docs/` core doctrine and workflow
+- `templates/` copyable planning artifacts
+- `checklists/` operational checklists
+- `.local/` private machine-specific notes, ignored by git
+
+## Version 0 Scope
+
+Grounded is intentionally docs-first.
+
+Version 1 is not a big application. It is a clear system that can be read by humans, summarized by AI, and reused across real projects. If recurring patterns prove worth automating, the project can grow into a static site and small web app later.
 
 ## Principles
 
-- Clarity before code
-- Small milestones over grand plans
-- Validation over decoration
-- Product pressure over builder ego
-- Constraints are part of the design
+- clarity before code
+- product pressure over builder ego
+- small milestones over grand plans
+- validation over decoration
+- constraints are part of the design
+
+## Status
+
+Early project. Current public focus is establishing the core doctrine, workflow, and reusable artifacts.
 
 ## License
 
