@@ -1,0 +1,21 @@
+---
+import type { CaseStudyCard } from "../data/site";
+
+interface Props {
+  items: CaseStudyCard[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="case-study-grid">
+  {
+    items.map((item) => (
+      <a class="case-card" href={item.href}>
+        <p class="resource-label">{item.audience}</p>
+        <h3 class="resource-title">{item.title}</h3>
+        <p class="resource-summary">{item.summary}</p>
+      </a>
+    ))
+  }
+</div>

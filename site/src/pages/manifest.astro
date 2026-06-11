@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownEntry from "../components/MarkdownEntry.astro";
+import PageIntro from "../components/PageIntro.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const docs = await getCollection("docs");
+const manifest = docs.find((entry) => entry.id === "manifest");
+const philosophy = docs.find((entry) => entry.id === "philosophy");
+
+if (!manifest || !philosophy) {
+  throw new Error("Required manifest docs not found.");
+}
+
+const manifestRender = await render(manifest);
+const philosophyRender = await render(philosophy);
+---
+
+<BaseLayout
+  description="Positioning and philosophy for Grounded."
+  title="Manifest | Grounded"
+>
+  <PageIntro
+    eyebrow="Positioning"
+    summary="Grounded exists because modern builders have more output than judgment. This page holds the project’s stance and the discipline beneath it."
+    title="What Grounded believes, and what it refuses."
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      Not a startup handbook. Not an AI product claim. Not a growth sermon.
+      Grounded is a practical method for choosing better next steps.
+    </p>
+  </PageIntro>
+
+  <MarkdownEntry content={manifestRender.Content} />
+  <MarkdownEntry content={philosophyRender.Content} />
+</BaseLayout>

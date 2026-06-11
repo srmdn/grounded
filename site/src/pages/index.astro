@@ -1,0 +1,142 @@
+---
+import { getCollection } from "astro:content";
+import CaseStudyGrid from "../components/CaseStudyGrid.astro";
+import PageIntro from "../components/PageIntro.astro";
+import ResourceGrid from "../components/ResourceGrid.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  audienceBands,
+  caseStudies,
+  docsLanding,
+  homeHighlights,
+  siteMeta,
+  threeLineTest,
+  useMoments,
+  workflowSteps,
+} from "../data/site";
+
+const startHere = (await getCollection("docs")).find((entry) => entry.id === "start-here");
+---
+
+<BaseLayout description={siteMeta.description} title="Grounded">
+  <section class="hero-shell">
+    <div class="hero-grid">
+      <div class="space-y-7">
+        <p class="eyebrow">Docs-First System</p>
+        <h1 class="hero-title">Build with less theater and more signal.</h1>
+        <p class="hero-summary">
+          Grounded helps people building something real under constraints stop drifting,
+          define a sane milestone, and choose the next step with better judgment.
+        </p>
+        <div class="action-row">
+          <a class="action-link action-link-primary" href="/use-it">Use the method</a>
+          <a class="action-link" href="/how-it-works">Read the loop</a>
+        </div>
+        <div class="signal-list">
+          {
+            homeHighlights.map((item) => (
+              <p class="signal-item">{item}</p>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hero-rail">
+        <div class="field-panel field-panel-strong">
+          <p class="resource-label">Three-Line Test</p>
+          <h2 class="field-title">Before tools, answer these cleanly.</h2>
+          <ol class="field-list">
+            {
+              threeLineTest.map((item) => (
+                <li>{item}</li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="field-panel">
+          <p class="resource-label">Best Use Moments</p>
+          <div class="space-y-3">
+            {
+              useMoments.map((item) => (
+                <p class="field-note">{item}</p>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="audience-strip" aria-label="Audience examples">
+      {
+        audienceBands.map((item) => (
+          <span class="audience-pill">{item}</span>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-frame">
+      <div class="space-y-3">
+        <p class="section-kicker">Core Reading</p>
+        <h2 class="section-title">Start with structure, not volume.</h2>
+        <p class="section-note">
+          Grounded should be fast to enter. Read only enough to stop vague motion,
+          then move into one practical artifact.
+        </p>
+      </div>
+      <ResourceGrid items={docsLanding} />
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-frame">
+      <div class="space-y-3">
+        <p class="section-kicker">Method</p>
+        <h2 class="section-title">One loop. Reused carefully.</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-[1.15fr_0.95fr]">
+        <div class="resource-card resource-card-tall">
+          <p class="resource-label">Workflow</p>
+          <ol class="space-y-3 pl-5 text-ink-soft">
+            {
+              workflowSteps.map((item) => (
+                <li class="leading-7">{item}</li>
+              ))
+            }
+          </ol>
+        </div>
+        <div class="resource-card resource-card-tall">
+          <p class="resource-label">Start Point</p>
+          <h3 class="resource-title">{startHere ? "Use the shortest path first." : "Read the docs."}</h3>
+          <p class="resource-summary">
+            If your idea is still blurry, do not reach for tooling yet. Start with
+            project brief, define milestone one, then ship and review.
+          </p>
+          <div class="resource-callout">
+            <p class="resource-summary">
+              Practical entry path, AI usage pattern, templates, and checklists live in one place.
+            </p>
+            <a class="micro-link" href="/use-it">Open the practical entry path</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-frame">
+      <div class="space-y-3">
+        <p class="section-kicker">Breadth</p>
+        <h2 class="section-title">Same method, different terrain.</h2>
+        <p class="section-note">
+          Grounded is not only for software. The case studies show the same
+          discipline applied to technical tooling, personal brand work, small
+          business execution, and learning paths.
+        </p>
+      </div>
+      <CaseStudyGrid items={caseStudies} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import CaseStudyGrid from "../../components/CaseStudyGrid.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import { caseStudies } from "../../data/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  description="Cross-domain examples of the Grounded method."
+  title="Case Studies | Grounded"
+>
+  <PageIntro
+    eyebrow="Examples"
+    summary="These examples are here to show judgment in context, not to create fake proof. Same method. Different kinds of work."
+    title="See the method applied on real and representative problems."
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      Technical projects are one use case, not the whole category.
+    </p>
+  </PageIntro>
+
+  <section class="section-block">
+    <CaseStudyGrid items={caseStudies} />
+  </section>
+</BaseLayout>

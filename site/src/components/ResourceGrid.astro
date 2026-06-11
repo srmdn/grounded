@@ -1,0 +1,21 @@
+---
+import type { ResourceCard } from "../data/site";
+
+interface Props {
+  items: ResourceCard[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="resource-grid">
+  {
+    items.map((item) => (
+      <a class="resource-card" href={item.href}>
+        <p class="resource-label">{item.label}</p>
+        <h3 class="resource-title">{item.title}</h3>
+        <p class="resource-summary">{item.summary}</p>
+      </a>
+    ))
+  }
+</div>

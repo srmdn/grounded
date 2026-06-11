@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownEntry from "../../components/MarkdownEntry.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const checklists = await getCollection("checklists");
+const execution = checklists.find((entry) => entry.id === "execution");
+const validation = checklists.find((entry) => entry.id === "validation");
+
+if (!execution || !validation) {
+  throw new Error("Required checklists not found.");
+}
+
+const executionRender = await render(execution);
+const validationRender = await render(validation);
+---
+
+<BaseLayout
+  description="Operational checklists for execution and validation."
+  title="Checklists | Grounded"
+>
+  <PageIntro
+    eyebrow="Operational Discipline"
+    summary="Checklists matter when complexity tries to re-enter through momentum, ambiguity, or excitement. Use them before and after a milestone."
+    title="Short checks for shipping and reviewing."
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      The point is not bureaucracy. The point is avoiding preventable drift.
+    </p>
+  </PageIntro>
+
+  <MarkdownEntry content={executionRender.Content} />
+  <MarkdownEntry content={validationRender.Content} />
+</BaseLayout>

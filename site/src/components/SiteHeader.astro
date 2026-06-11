@@ -1,0 +1,39 @@
+---
+import { navItems } from "../data/site";
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="border-b border-ink/10">
+  <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:gap-8 md:px-8">
+    <div class="flex items-center justify-between gap-6">
+      <a class="brand-lockup" href="/">
+        <span class="brand-kicker">Grounded</span>
+        <span class="brand-note">decision and execution under constraints</span>
+      </a>
+      <a class="micro-link md:hidden" href="/use-it">Start Here</a>
+    </div>
+    <nav aria-label="Primary" class="mobile-nav md:block">
+      <ul class="flex items-center gap-2 overflow-x-auto pb-1 md:justify-end md:overflow-visible md:pb-0">
+        {
+          navItems.map((item) => {
+            const isCurrent = pathname === item.href;
+            return (
+              <li>
+                <a
+                  class:list={[
+                    "nav-pill",
+                    { "nav-pill-current": isCurrent },
+                  ]}
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

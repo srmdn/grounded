@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownEntry from "../../components/MarkdownEntry.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const templates = await getCollection("templates");
+const projectBrief = templates.find((entry) => entry.id === "project-brief");
+const milestoneReview = templates.find((entry) => entry.id === "milestone-review");
+
+if (!projectBrief || !milestoneReview) {
+  throw new Error("Required templates not found.");
+}
+
+const projectBriefRender = await render(projectBrief);
+const milestoneReviewRender = await render(milestoneReview);
+---
+
+<BaseLayout
+  description="Copyable templates for planning and review."
+  title="Templates | Grounded"
+>
+  <PageIntro
+    eyebrow="Reusable Artifacts"
+    summary="Grounded should produce practical artifacts, not only opinion. These templates hold the minimum structure needed to think more clearly."
+    title="Templates you can copy into live work."
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      Keep them short. Fill them with specifics. Avoid strategic fog.
+    </p>
+  </PageIntro>
+
+  <MarkdownEntry content={projectBriefRender.Content} />
+  <MarkdownEntry content={milestoneReviewRender.Content} />
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownEntry from "../components/MarkdownEntry.astro";
+import PageIntro from "../components/PageIntro.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const docs = await getCollection("docs");
+const workflow = docs.find((entry) => entry.id === "workflow");
+const guide = docs.find((entry) => entry.id === "canonical-guide");
+
+if (!workflow || !guide) {
+  throw new Error("Required workflow docs not found.");
+}
+
+const workflowRender = await render(workflow);
+const guideRender = await render(guide);
+---
+
+<BaseLayout
+  description="Workflow and canonical path through Grounded."
+  title="How It Works | Grounded"
+>
+  <PageIntro
+    eyebrow="Method"
+    summary="Grounded uses a small decision loop: clarify, scope, define a real milestone, execute, validate, learn, reprioritize. Simple shape. Hard discipline."
+    title="How the method moves from idea to sane execution."
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      Use this when options are multiplying faster than evidence.
+    </p>
+  </PageIntro>
+
+  <MarkdownEntry content={workflowRender.Content} />
+  <MarkdownEntry content={guideRender.Content} />
+</BaseLayout>

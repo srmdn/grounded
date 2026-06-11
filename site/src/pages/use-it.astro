@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownEntry from "../components/MarkdownEntry.astro";
+import PageIntro from "../components/PageIntro.astro";
+import ResourceGrid from "../components/ResourceGrid.astro";
+import { useItResources } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const docs = await getCollection("docs");
+const startHere = docs.find((entry) => entry.id === "start-here");
+const withAi = docs.find((entry) => entry.id === "use-with-ai");
+
+if (!startHere || !withAi) {
+  throw new Error("Required use-it docs not found.");
+}
+
+const startHereRender = await render(startHere);
+const withAiRender = await render(withAi);
+---
+
+<BaseLayout
+  description="Practical entry path into Grounded plus AI usage guidance."
+  title="Use It | Grounded"
+>
+  <PageIntro
+    eyebrow="Practical Use"
+    summary="Use Grounded when idea is vague, scope is drifting, or next step keeps changing shape. Start small. Review fast. Let evidence cut through excitement."
+    title="How to use the system without overcomplicating it."
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      Grounded works with a notebook, a plain document, or an AI assistant. The
+      method matters more than the surface.
+    </p>
+  </PageIntro>
+
+  <section class="section-block">
+    <div class="section-frame">
+      <div class="space-y-3">
+        <p class="section-kicker">Practical Assets</p>
+        <h2 class="section-title">Templates and checklists for live work.</h2>
+      </div>
+      <ResourceGrid items={useItResources} />
+    </div>
+  </section>
+
+  <MarkdownEntry content={startHereRender.Content} />
+  <MarkdownEntry content={withAiRender.Content} />
+</BaseLayout>

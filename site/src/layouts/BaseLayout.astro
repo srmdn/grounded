@@ -1,0 +1,35 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+
+interface Props {
+  description?: string;
+  title?: string;
+}
+
+const { description = "Grounded", title = "Grounded" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="site-noise"></div>
+      <div class="site-grid"></div>
+      <div class="site-glow site-glow-left"></div>
+      <div class="site-glow site-glow-right"></div>
+      <SiteHeader />
+      <main>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

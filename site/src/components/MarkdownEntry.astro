@@ -1,0 +1,11 @@
+---
+interface Props {
+  content: any;
+}
+
+const { content: Content } = Astro.props;
+---
+
+<article class="prose-shell">
+  <Content />
+</article>

@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownEntry from "../../components/MarkdownEntry.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import { caseStudies } from "../../data/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  return caseStudies.map((study) => ({
+    params: { slug: study.id },
+    props: { card: study },
+  }));
+}
+
+const { card } = Astro.props;
+const docs = await getCollection("docs");
+const entry = docs.find((item) => item.id === card.id);
+
+if (!entry) {
+  throw new Error(`Case study not found: ${card.id}`);
+}
+
+const rendered = await render(entry);
+---
+
+<BaseLayout description={card.summary} title={`${card.title} | Grounded`}>
+  <PageIntro
+    eyebrow={card.audience}
+    summary={card.summary}
+    title={card.title}
+  >
+    <p class="text-sm leading-7 text-ink-soft">
+      Planning and framing example. Useful for scope judgment, not proof theater.
+    </p>
+  </PageIntro>
+
+  <MarkdownEntry content={rendered.Content} />
+</BaseLayout>
