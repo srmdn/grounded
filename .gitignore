@@ -2,7 +2,10 @@
 .env
 .env.*
 !.env.example
+.agents/
+.claude/
 .local/
+.opencode/
 DESIGN.md
 PRODUCT.md
 *.db
