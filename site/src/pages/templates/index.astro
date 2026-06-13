@@ -14,6 +14,19 @@ if (!projectBrief || !milestoneReview) {
 
 const projectBriefRender = await render(projectBrief);
 const milestoneReviewRender = await render(milestoneReview);
+
+const templateCards = [
+  {
+    id: "project-brief",
+    title: "Project Brief",
+    description: "Turn vague intention into a spec-lite with clear constraints.",
+  },
+  {
+    id: "milestone-review",
+    title: "Milestone Review",
+    description: "Capture what changed after shipping before scope drifts again.",
+  },
+];
 ---
 
 <BaseLayout
@@ -30,6 +43,138 @@ const milestoneReviewRender = await render(milestoneReview);
     </p>
   </PageIntro>
 
-  <MarkdownEntry content={projectBriefRender.Content} />
-  <MarkdownEntry content={milestoneReviewRender.Content} />
+  <section class="section-block">
+    <div class="template-cards">
+      {templateCards.map((card) => (
+        <a class="tpl-card" href={`#${card.id}`}>
+          <div class="tpl-card__chrome">
+            <span class="tpl-card__dot" />
+            <span class="tpl-card__dot" />
+            <span class="tpl-card__dot" />
+          </div>
+          <div class="tpl-card__body">
+            <h3 class="tpl-card__title">{card.title}</h3>
+            <p class="tpl-card__desc">{card.description}</p>
+          </div>
+          <span class="tpl-card__cue">
+            View template
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <div id="project-brief">
+    <MarkdownEntry content={projectBriefRender.Content} />
+  </div>
+  <div id="milestone-review">
+    <MarkdownEntry content={milestoneReviewRender.Content} />
+  </div>
 </BaseLayout>
+
+<style>
+  .template-cards {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .tpl-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.75rem;
+    padding: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    transition:
+      transform var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .tpl-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-rule-strong);
+    background: var(--color-surface-raised);
+  }
+
+  /* Terminal chrome dots */
+  .tpl-card__chrome {
+    display: flex;
+    gap: 6px;
+    padding: 0.75rem 1rem;
+    background: oklch(0.10 0 0);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .tpl-card__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: oklch(0.28 0 0);
+  }
+
+  .tpl-card__dot:nth-child(1) {
+    background: oklch(0.55 0.15 25);
+  }
+
+  .tpl-card__dot:nth-child(2) {
+    background: oklch(0.65 0.12 85);
+  }
+
+  .tpl-card__dot:nth-child(3) {
+    background: oklch(0.55 0.142 130);
+  }
+
+  .tpl-card__body {
+    padding: 1rem 1.25rem 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .tpl-card__title {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+  }
+
+  .tpl-card__desc {
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .tpl-card__cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.75rem 1.25rem 1rem;
+    color: var(--color-ink-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .tpl-card:hover .tpl-card__cue {
+    color: var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    .template-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

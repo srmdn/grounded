@@ -15,7 +15,7 @@ export default {
       },
       fontFamily: {
         mono: ['"JetBrains Mono"', '"SFMono-Regular"', "monospace"],
-        sans: ["Outfit", '"Avenir Next"', '"Segoe UI"', "sans-serif"],
+        sans: ['"Avenir Next"', '"Helvetica Neue"', "Arial", "sans-serif"],
       },
     },
   },

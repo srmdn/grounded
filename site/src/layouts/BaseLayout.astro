@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { description = "Grounded", title = "Grounded" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://grounded.systems");
 ---
 
 <!doctype html>
@@ -18,18 +19,71 @@ const { description = "Grounded", title = "Grounded" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+
+    <!-- Google Fonts: Source Serif 4 + Work Sans + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Inline theme script: prevent flash, resolve before paint -->
+    <script is:inline>
+      (function () {
+        var key = "grounded-theme";
+        var stored = localStorage.getItem(key);
+        var theme = stored || "light";
+        var html = document.documentElement;
+        html.classList.add(theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+          meta.content = theme === "light" ? "#ffffff" : "#141c1a";
+        }
+      })();
+    </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="site-shell">
-      <div class="site-noise"></div>
-      <div class="site-grid"></div>
-      <div class="site-glow site-glow-left"></div>
-      <div class="site-glow site-glow-right"></div>
       <SiteHeader />
-      <main>
+      <main id="main-content">
         <slot />
       </main>
       <SiteFooter />
     </div>
   </body>
 </html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.6rem 1rem;
+    background: var(--color-primary);
+    color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 0 0 6px 6px;
+    text-decoration: none;
+    transition: top 150ms ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+</style>

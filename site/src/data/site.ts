@@ -21,13 +21,9 @@ export type CaseStudyCard = {
 };
 
 export const navItems: NavItem[] = [
-  { href: "/", label: "Home" },
   { href: "/manifest", label: "Manifest" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/use-it", label: "Use It" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/templates", label: "Templates" },
-  { href: "/checklists", label: "Checklists" },
 ];
 
 export const homeHighlights = [

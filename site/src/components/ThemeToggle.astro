@@ -1,0 +1,104 @@
+---
+// ThemeToggle.astro — light/dark cycle button
+// Cycles: light → dark → light
+// Stores preference in localStorage('grounded-theme')
+// Updates html class and meta theme-color
+---
+
+<button
+  type="button"
+  class="theme-toggle"
+  aria-label="Switch to dark theme"
+  data-theme="light"
+>
+  <svg class="theme-icon theme-icon--light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+  <svg class="theme-icon theme-icon--dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--color-ink-soft);
+    cursor: pointer;
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .theme-toggle:hover {
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .theme-icon {
+    display: none;
+  }
+
+  :global(html.light) .theme-icon--light,
+  :global(html.dark) .theme-icon--dark {
+    display: block;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var key = "grounded-theme";
+    var btn = document.querySelector(".theme-toggle");
+    if (!btn) return;
+
+    var labels = {
+      light: "Switch to dark theme",
+      dark: "Switch to light theme",
+    };
+
+    function applyTheme(theme) {
+      var html = document.documentElement;
+      html.classList.remove("light", "dark");
+      html.classList.add(theme);
+
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        meta.content = theme === "light" ? "#ffffff" : "#141c1a";
+      }
+
+      btn.setAttribute("aria-label", labels[theme]);
+      btn.setAttribute("data-theme", theme);
+    }
+
+    var initialTheme =
+      document.documentElement.classList.contains("dark") ? "dark" : "light";
+    applyTheme(initialTheme);
+
+    btn.addEventListener("click", function () {
+      var current = btn.getAttribute("data-theme") || "light";
+      var next = current === "light" ? "dark" : "light";
+      localStorage.setItem(key, next);
+      applyTheme(next);
+    });
+  })();
+</script>

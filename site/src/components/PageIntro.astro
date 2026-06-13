@@ -8,13 +8,66 @@ interface Props {
 const { eyebrow, summary, title } = Astro.props;
 ---
 
-<section class="mx-auto grid w-full max-w-[1400px] gap-6 px-4 py-12 md:grid-cols-[minmax(0,1.8fr)_minmax(18rem,0.8fr)] md:px-8 md:py-20">
-  <div class="space-y-5">
-    <p class="eyebrow">{eyebrow}</p>
-    <h1 class="page-title">{title}</h1>
-    <p class="page-summary">{summary}</p>
+<section class="page-intro">
+  <div class="intro-copy">
+    <p class="intro-eyebrow">{eyebrow}</p>
+    <h1 class="intro-title">{title}</h1>
+    <p class="intro-summary">{summary}</p>
   </div>
-  <div class="intro-aside">
+  <aside class="intro-aside">
     <slot />
-  </div>
+  </aside>
 </section>
+
+<style>
+  .page-intro {
+    padding: 3.5rem 0 3rem;
+    display: grid;
+    grid-template-columns: 1.7fr 0.8fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .intro-eyebrow {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.52 0.13 45);
+    margin: 0 0 0.75rem;
+  }
+
+  .intro-title {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 0.96;
+    color: oklch(0.55 0.142 130);
+    margin: 0 0 1.2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .intro-summary {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: oklch(0.65 0 0);
+    max-width: 58ch;
+    margin: 0;
+  }
+
+  .intro-aside {
+    background: oklch(0.12 0 0);
+    border: 1px solid oklch(0.25 0 0 / 0.18);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-intro {
+      grid-template-columns: 1fr;
+      padding: 2.5rem 0 2rem;
+    }
+  }
+</style>

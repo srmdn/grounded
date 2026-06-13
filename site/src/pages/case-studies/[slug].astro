@@ -34,5 +34,133 @@ const rendered = await render(entry);
     </p>
   </PageIntro>
 
-  <MarkdownEntry content={rendered.Content} />
+  <div class="doc-layout">
+    <aside class="doc-sidebar">
+      <a class="doc-sidebar__back" href="/case-studies">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All case studies
+      </a>
+      <nav class="doc-sidebar__nav" id="doc-toc" aria-label="Table of contents">
+        <!-- Populated by client script below -->
+      </nav>
+    </aside>
+
+    <article class="doc-content">
+      <MarkdownEntry content={rendered.Content} />
+    </article>
+  </div>
 </BaseLayout>
+
+<script is:inline>
+  (function buildToc() {
+    var article = document.querySelector('.doc-content');
+    var nav = document.getElementById('doc-toc');
+    if (!article || !nav) return;
+
+    var headings = article.querySelectorAll('h2');
+    if (!headings.length) return;
+
+    var list = document.createElement('ol');
+    list.className = 'doc-sidebar__list';
+
+    headings.forEach(function(h) {
+      if (!h.id) {
+        h.id = h.textContent.trim().toLowerCase().replace(/[^\w]+/g, '-');
+      }
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      a.className = 'doc-sidebar__link';
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+
+    nav.appendChild(list);
+  })();
+</script>
+
+<style>
+  .doc-layout {
+    display: grid;
+    gap: 2rem;
+    width: min(100%, var(--max-width));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-bottom: 4rem;
+  }
+
+  .doc-sidebar {
+    display: none;
+  }
+
+  .doc-content {
+    min-width: 0;
+  }
+
+  /* Sidebar: visible on desktop */
+  @media (min-width: 768px) {
+    .doc-layout {
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 3rem;
+      padding-inline: 2rem;
+    }
+
+    .doc-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: sticky;
+      top: 2rem;
+      align-self: start;
+      max-height: calc(100dvh - 4rem);
+      overflow-y: auto;
+    }
+
+    .doc-sidebar__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--color-ink-soft);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .doc-sidebar__back:hover {
+      color: var(--color-primary);
+    }
+
+    .doc-sidebar__list {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .doc-sidebar__link {
+      display: block;
+      padding: 0.35rem 0;
+      color: var(--color-ink-muted);
+      font-size: 0.88rem;
+      line-height: 1.4;
+      text-decoration: none;
+      border-left: 2px solid var(--color-rule);
+      padding-left: 0.75rem;
+      transition:
+        color var(--duration-fast) var(--ease-out),
+        border-color var(--duration-fast) var(--ease-out);
+    }
+
+    .doc-sidebar__link:hover {
+      color: var(--color-ink);
+      border-color: var(--color-primary);
+    }
+  }
+</style>

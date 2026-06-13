@@ -14,22 +14,246 @@ if (!workflow || !guide) {
 
 const workflowRender = await render(workflow);
 const guideRender = await render(guide);
+
+const headings = [
+  ...workflowRender.headings,
+  ...guideRender.headings,
+].filter((h) => h.depth === 2);
 ---
 
 <BaseLayout
   description="Workflow and canonical path through Grounded."
   title="How It Works | Grounded"
 >
-  <PageIntro
-    eyebrow="Method"
-    summary="Grounded uses a small decision loop: clarify, scope, define a real milestone, execute, validate, learn, reprioritize. Simple shape. Hard discipline."
-    title="How the method moves from idea to sane execution."
-  >
-    <p class="text-sm leading-7 text-ink-soft">
-      Use this when options are multiplying faster than evidence.
-    </p>
-  </PageIntro>
+  <div class="dark-page">
+    <PageIntro
+      eyebrow="Method"
+      summary="Grounded uses a small decision loop: clarify, scope, define a real milestone, execute, validate, learn, reprioritize. Simple shape. Hard discipline."
+      title="How the method moves from idea to sane execution."
+    >
+      <p class="text-sm leading-7 text-ink-soft">
+        Use this when options are multiplying faster than evidence.
+      </p>
+    </PageIntro>
 
-  <MarkdownEntry content={workflowRender.Content} />
-  <MarkdownEntry content={guideRender.Content} />
+    <div class:list={["doc-layout", { "doc-layout--full": headings.length === 0 }]}>
+      {headings.length > 0 && (
+        <nav class="doc-sidebar" aria-label="On this page">
+          <p class="sidebar-label">On this page</p>
+          <ul class="sidebar-nav">
+            {headings.map((h) => (
+              <li>
+                <a class="sidebar-link" href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+      <div class="doc-content">
+        <MarkdownEntry content={workflowRender.Content} />
+        <MarkdownEntry content={guideRender.Content} />
+      </div>
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  /* ── Dark page: swap CSS custom properties ── */
+  .dark-page {
+    --paper: oklch(0.08 0 0);
+    --paper-strong: oklch(0.12 0 0);
+    --panel: oklch(0.1 0 0);
+    --hero: oklch(0.93 0 0);
+    --ink: oklch(0.93 0 0);
+    --ink-soft: oklch(0.78 0 0);
+    --ink-muted: oklch(0.5 0 0);
+    --accent: oklch(0.55 0.142 130);
+    --line: oklch(0.2 0 0);
+
+    --paper-rgb: 20 20 20;
+    --paper-strong-rgb: 30 30 30;
+    --panel-rgb: 25 25 25;
+    --hero-rgb: 236 236 236;
+    --ink-rgb: 236 236 236;
+    --ink-soft-rgb: 198 198 198;
+    --ink-muted-rgb: 128 128 128;
+    --accent-rgb: 83 119 72;
+    --line-rgb: 51 51 51;
+
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  /* ── Doc layout: sidebar + content ── */
+  .doc-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2.5rem;
+    width: min(100%, 1400px);
+    margin-inline: auto;
+    padding-inline: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .doc-layout--full {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Sidebar ── */
+  .doc-sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    max-height: calc(100dvh - 4rem);
+    overflow-y: auto;
+  }
+
+  .sidebar-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 0.85rem;
+  }
+
+  .sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.1rem;
+  }
+
+  .sidebar-link {
+    display: block;
+    padding: 0.35rem 0.75rem;
+    border-left: 2px solid transparent;
+    color: var(--ink-muted);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    text-decoration: none;
+    transition:
+      color 150ms ease,
+      border-color 150ms ease,
+      background 150ms ease;
+  }
+
+  .sidebar-link:hover {
+    color: var(--ink);
+    border-left-color: var(--accent);
+    background: linear-gradient(
+      to right,
+      oklch(0.12 0.02 130),
+      transparent
+    );
+  }
+
+  .sidebar-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* ── Content area ── */
+  .doc-content {
+    min-width: 0;
+  }
+
+  /* ── Prose overrides for dark context ── */
+  .doc-content :global(.prose-shell) {
+    max-width: 72ch;
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+
+  .doc-content :global(.prose-shell h2),
+  .doc-content :global(.prose-shell h3) {
+    scroll-margin-top: 2rem;
+  }
+
+  .doc-content :global(.prose-shell p),
+  .doc-content :global(.prose-shell li),
+  .doc-content :global(.prose-shell blockquote) {
+    color: var(--ink-soft);
+  }
+
+  .doc-content :global(.prose-shell a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .doc-content :global(.prose-shell a:hover) {
+    color: oklch(0.65 0.142 130);
+  }
+
+  .doc-content :global(.prose-shell code) {
+    font-family: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+    background: oklch(0.12 0 0);
+    padding: 0.3em 0.5em;
+    border-radius: 3px;
+    border: 1px solid var(--line);
+    font-size: 0.88em;
+  }
+
+  .doc-content :global(.prose-shell blockquote) {
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+    color: var(--ink-muted);
+  }
+
+  .doc-content :global(.prose-shell li)::marker {
+    color: var(--ink-muted);
+  }
+
+  /* ── Page intro dark overrides ── */
+  .dark-page :global(.intro-aside) {
+    background: var(--panel);
+    border-color: var(--line);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 767px) {
+    .doc-layout {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .doc-sidebar {
+      position: static;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1rem;
+      max-height: none;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .sidebar-link {
+      border-left: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .sidebar-link:hover {
+      border-bottom-color: var(--accent);
+      border-left-color: transparent;
+      background: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .doc-layout {
+      padding-inline: 2rem;
+    }
+  }
+</style>

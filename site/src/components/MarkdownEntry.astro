@@ -9,3 +9,111 @@ const { content: Content } = Astro.props;
 <article class="prose-shell">
   <Content />
 </article>
+
+<style>
+  .prose-shell {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    color: oklch(0.65 0 0);
+    font-size: 1.02rem;
+    line-height: 1.8;
+  }
+
+  .prose-shell :global(h1) {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 0.94;
+    color: oklch(0.55 0.142 130);
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-shell :global(h2) {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.0;
+    color: oklch(0.93 0 0);
+    margin-top: 2.6rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .prose-shell :global(h3) {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: oklch(0.93 0 0);
+    margin-top: 1.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-shell :global(p) {
+    max-width: 72ch;
+    margin: 0 0 1.2rem;
+  }
+
+  .prose-shell :global(li) {
+    max-width: 72ch;
+    margin-bottom: 0.35rem;
+  }
+
+  .prose-shell :global(ul),
+  .prose-shell :global(ol) {
+    padding-left: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .prose-shell :global(code) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    background: oklch(0.12 0 0);
+    border: 1px solid oklch(0.25 0 0 / 0.18);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    color: oklch(0.93 0 0);
+  }
+
+  .prose-shell :global(a) {
+    color: oklch(0.55 0.142 130);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 180ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .prose-shell :global(a:hover) {
+    color: oklch(0.65 0.142 130);
+  }
+
+  .prose-shell :global(a:focus-visible) {
+    outline: 2px solid oklch(0.55 0.142 130);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .prose-shell :global(blockquote) {
+    border-left: 2px solid oklch(0.55 0.142 130);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: oklch(0.48 0 0);
+    font-style: italic;
+  }
+
+  .prose-shell :global(blockquote p) {
+    margin-bottom: 0.4rem;
+  }
+
+  .prose-shell :global(strong) {
+    color: oklch(0.93 0 0);
+    font-weight: 600;
+  }
+
+  .prose-shell :global(hr) {
+    border: none;
+    border-top: 1px solid oklch(0.25 0 0 / 0.18);
+    margin: 2rem 0;
+  }
+</style>

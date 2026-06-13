@@ -3,6 +3,8 @@
 .env.*
 !.env.example
 .local/
+DESIGN.md
+PRODUCT.md
 *.db
 *.sqlite
 *.sqlite3

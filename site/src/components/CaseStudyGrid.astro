@@ -10,12 +10,97 @@ const { items } = Astro.props;
 
 <div class="case-study-grid">
   {
-    items.map((item) => (
-      <a class="case-card" href={item.href}>
-        <p class="resource-label">{item.audience}</p>
-        <h3 class="resource-title">{item.title}</h3>
-        <p class="resource-summary">{item.summary}</p>
+    items.map((item, i) => (
+      <a class:list={["case-entry", { "case-entry--offset": (i + 1) % 3 === 2 || (i + 1) % 5 === 0 }]} href={item.href}>
+        <p class="case-audience">{item.audience}</p>
+        <h3 class="case-title">{item.title}</h3>
+        <p class="case-summary">{item.summary}</p>
+        <span class="case-link">Read case →</span>
       </a>
     ))
   }
 </div>
+
+<style>
+  .case-study-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.95fr 1.05fr;
+    gap: 1.4rem;
+    align-items: start;
+  }
+
+  .case-entry {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid oklch(0.25 0 0 / 0.18);
+    border-radius: 12px;
+    padding: 1.4rem 1.2rem 1.2rem;
+    background: oklch(0.12 0 0);
+    text-decoration: none;
+    transition: transform 180ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .case-entry--offset {
+    margin-top: 2rem;
+  }
+
+  .case-entry:hover {
+    transform: translateY(-2px);
+  }
+
+  .case-entry:focus-visible {
+    outline: 2px solid oklch(0.55 0.142 130);
+    outline-offset: 2px;
+    border-radius: 12px;
+  }
+
+  .case-audience {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.52 0.13 45);
+    margin: 0 0 0.6rem;
+  }
+
+  .case-title {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: oklch(0.93 0 0);
+    margin: 0 0 0.5rem;
+  }
+
+  .case-summary {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: oklch(0.65 0 0);
+    margin: 0 0 1rem;
+    flex: 1;
+  }
+
+  .case-link {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: oklch(0.55 0.142 130);
+    transition: color 180ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .case-entry:hover .case-link {
+    color: oklch(0.65 0.142 130);
+  }
+
+  @media (max-width: 768px) {
+    .case-study-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .case-entry--offset {
+      margin-top: 0;
+    }
+  }
+</style>

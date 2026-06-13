@@ -11,11 +11,91 @@ const { items } = Astro.props;
 <div class="resource-grid">
   {
     items.map((item) => (
-      <a class="resource-card" href={item.href}>
+      <a class="resource-entry" href={item.href}>
         <p class="resource-label">{item.label}</p>
         <h3 class="resource-title">{item.title}</h3>
         <p class="resource-summary">{item.summary}</p>
+        <span class="resource-link">Open →</span>
       </a>
     ))
   }
 </div>
+
+<style>
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .resource-entry {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid oklch(0.55 0.142 130);
+    border-radius: 12px;
+    padding: 1.4rem 1.2rem 1.2rem;
+    background: oklch(0.12 0 0);
+    text-decoration: none;
+    transition: transform 180ms cubic-bezier(.16, 1, .3, 1),
+                border-color 180ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .resource-entry:hover {
+    transform: translateY(-2px);
+    border-top-color: oklch(0.55 0.142 130);
+    border-top-width: 3px;
+  }
+
+  .resource-entry:focus-visible {
+    outline: 2px solid oklch(0.55 0.142 130);
+    outline-offset: 2px;
+    border-radius: 12px;
+  }
+
+  .resource-label {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.55 0.142 130);
+    margin: 0 0 0.6rem;
+  }
+
+  .resource-title {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: oklch(0.93 0 0);
+    margin: 0 0 0.5rem;
+  }
+
+  .resource-summary {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: oklch(0.65 0 0);
+    max-width: 44ch;
+    margin: 0 0 1rem;
+    flex: 1;
+  }
+
+  .resource-link {
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: oklch(0.55 0.142 130);
+    transition: color 180ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .resource-entry:hover .resource-link {
+    color: oklch(0.65 0.142 130);
+  }
+
+  @media (max-width: 768px) {
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

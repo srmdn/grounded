@@ -1,142 +1,653 @@
 ---
-import { getCollection } from "astro:content";
-import CaseStudyGrid from "../components/CaseStudyGrid.astro";
-import PageIntro from "../components/PageIntro.astro";
-import ResourceGrid from "../components/ResourceGrid.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
-  audienceBands,
   caseStudies,
-  docsLanding,
-  homeHighlights,
   siteMeta,
-  threeLineTest,
-  useMoments,
-  workflowSteps,
+  useItResources,
 } from "../data/site";
-
-const startHere = (await getCollection("docs")).find((entry) => entry.id === "start-here");
 ---
 
 <BaseLayout description={siteMeta.description} title="Grounded">
-  <section class="hero-shell">
-    <div class="hero-grid">
-      <div class="space-y-7">
-        <p class="eyebrow">Docs-First System</p>
-        <h1 class="hero-title">Build with less theater and more signal.</h1>
-        <p class="hero-summary">
-          Grounded helps people building something real under constraints stop drifting,
-          define a sane milestone, and choose the next step with better judgment.
-        </p>
-        <div class="action-row">
-          <a class="action-link action-link-primary" href="/use-it">Use the method</a>
-          <a class="action-link" href="/how-it-works">Read the loop</a>
-        </div>
-        <div class="signal-list">
-          {
-            homeHighlights.map((item) => (
-              <p class="signal-item">{item}</p>
-            ))
-          }
-        </div>
+  <!-- ══════════════════════════════════════════════════════
+       Hero — light, single-column, one statement, one path
+       ══════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-kicker">Docs-first decision system</p>
+
+      <h1 class="hero-title">Build with less theater and more signal.</h1>
+
+      <p class="hero-lede">
+        Grounded is a docs-first method for people building real things
+        under real constraints. Stop drifting, define a sane milestone,
+        and choose the next step with better judgment.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="/use-it">Use the method</a>
+        <a class="btn-link" href="/how-it-works">Read the loop</a>
       </div>
 
-      <div class="hero-rail">
-        <div class="field-panel field-panel-strong">
-          <p class="resource-label">Three-Line Test</p>
-          <h2 class="field-title">Before tools, answer these cleanly.</h2>
-          <ol class="field-list">
-            {
-              threeLineTest.map((item) => (
-                <li>{item}</li>
-              ))
-            }
-          </ol>
-        </div>
+      <p class="hero-note">
+        Start with a brief. Keep the first milestone small. Review before you widen scope.
+      </p>
+    </div>
 
-        <div class="field-panel">
-          <p class="resource-label">Best Use Moments</p>
-          <div class="space-y-3">
-            {
-              useMoments.map((item) => (
-                <p class="field-note">{item}</p>
-              ))
-            }
+    <aside class="hero-visual">
+      <figure class="loop-diagram" aria-label="The Grounded loop: Project Brief, Milestone One, Ship, Review, Next Milestone">
+        <svg
+          viewBox="0 0 420 420"
+          xmlns="http://www.w3.org/2000/svg"
+          class="loop-svg"
+          aria-hidden="true"
+        >
+          <defs>
+            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="var(--olive)" />
+            </marker>
+          </defs>
+
+          <circle cx="210" cy="210" r="132" fill="none" stroke="var(--rule)" stroke-width="1" />
+          <path d="M120 128 C168 82, 252 82, 300 128" fill="none" stroke="var(--olive)" stroke-width="2.25" marker-end="url(#arrowhead)" />
+          <path d="M322 150 C348 196, 348 262, 300 306" fill="none" stroke="var(--olive)" stroke-width="2.25" marker-end="url(#arrowhead)" />
+          <path d="M298 322 C252 350, 168 350, 122 322" fill="none" stroke="var(--olive)" stroke-width="2.25" marker-end="url(#arrowhead)" />
+          <path d="M98 300 C72 252, 72 168, 120 120" fill="none" stroke="var(--olive)" stroke-width="2.25" marker-end="url(#arrowhead)" />
+
+          <g>
+            <circle cx="110" cy="110" r="34" fill="var(--paper)" stroke="var(--olive)" stroke-width="2" />
+            <text x="110" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="var(--olive)">01</text>
+            <text x="110" y="123" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Brief</text>
+          </g>
+
+          <g>
+            <circle cx="310" cy="110" r="34" fill="var(--paper)" stroke="var(--olive)" stroke-width="2" />
+            <text x="310" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="var(--olive)">02</text>
+            <text x="310" y="123" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Milestone</text>
+          </g>
+
+          <g>
+            <circle cx="310" cy="310" r="34" fill="var(--paper)" stroke="var(--olive)" stroke-width="2" />
+            <text x="310" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="var(--olive)">03</text>
+            <text x="310" y="323" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Ship</text>
+          </g>
+
+          <g>
+            <circle cx="110" cy="310" r="34" fill="var(--paper)" stroke="var(--olive)" stroke-width="2" />
+            <text x="110" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="var(--olive)">04</text>
+            <text x="110" y="323" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Review</text>
+          </g>
+
+          <text x="210" y="205" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Next</text>
+          <text x="210" y="224" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">Milestone</text>
+        </svg>
+      </figure>
+
+      <div class="hero-caption">
+        <p class="hero-caption-label">Method</p>
+        <p class="hero-caption-text">
+          One loop. Reused carefully. The point is not productivity theater. The point is better decisions.
+        </p>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       The Loop — walkthrough section
+       ══════════════════════════════════════════════════════ -->
+  <section class="loop-walkthrough">
+    <h2 class="loop-section-title">The loop. Reused carefully.</h2>
+    <p class="loop-section-lede">
+      Grounded is one loop with one job: turn a vague intention into a real next
+      step without fake productivity or premature complexity.
+    </p>
+
+    <div class="loop-steps">
+      {[
+        { step: "1", label: "Project Brief", desc: "Clarify: who this is for, what hurts now, smallest useful version." },
+        { step: "2", label: "Milestone One", desc: "Define a real first milestone before implementation pulls scope apart." },
+        { step: "3", label: "Ship", desc: "Ship something usable. Small. Concrete. Measurable." },
+        { step: "4", label: "Review", desc: "Review what changed. Did the milestone help or only create output? Choose next step." },
+      ].map((item, i) => (
+        <div class="loop-step">
+          <div class="loop-node">
+            <span class="loop-number">{item.step}</span>
           </div>
+          <h3 class="loop-label">{item.label}</h3>
+          <p class="loop-desc">{item.desc}</p>
         </div>
-      </div>
-    </div>
-
-    <div class="audience-strip" aria-label="Audience examples">
-      {
-        audienceBands.map((item) => (
-          <span class="audience-pill">{item}</span>
-        ))
-      }
+      ))}
     </div>
   </section>
 
-  <section class="section-block">
-    <div class="section-frame">
-      <div class="space-y-3">
-        <p class="section-kicker">Core Reading</p>
-        <h2 class="section-title">Start with structure, not volume.</h2>
-        <p class="section-note">
-          Grounded should be fast to enter. Read only enough to stop vague motion,
-          then move into one practical artifact.
-        </p>
-      </div>
-      <ResourceGrid items={docsLanding} />
+  <!-- ══════════════════════════════════════════════════════
+       Artifacts — three cards with olive left borders
+       ══════════════════════════════════════════════════════ -->
+  <section class="artifacts-section">
+    <h2 class="section-heading">The artifacts.</h2>
+    <p class="section-lede">
+      Grounded gives you three practical artifacts. Write a brief. Ship a
+      milestone. Run the checklist. Repeat.
+    </p>
+
+    <div class="artifact-cards">
+      {useItResources.slice(0, 3).map((item) => (
+        <a class="artifact-card" href={item.href}>
+          <span class="artifact-label">{item.label}</span>
+          <h3 class="artifact-title">{item.title}</h3>
+          <p class="artifact-summary">{item.summary}</p>
+          <span class="artifact-link">Open</span>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section class="section-block">
-    <div class="section-frame">
-      <div class="space-y-3">
-        <p class="section-kicker">Method</p>
-        <h2 class="section-title">One loop. Reused carefully.</h2>
-      </div>
-      <div class="grid gap-4 md:grid-cols-[1.15fr_0.95fr]">
-        <div class="resource-card resource-card-tall">
-          <p class="resource-label">Workflow</p>
-          <ol class="space-y-3 pl-5 text-ink-soft">
-            {
-              workflowSteps.map((item) => (
-                <li class="leading-7">{item}</li>
-              ))
-            }
-          </ol>
-        </div>
-        <div class="resource-card resource-card-tall">
-          <p class="resource-label">Start Point</p>
-          <h3 class="resource-title">{startHere ? "Use the shortest path first." : "Read the docs."}</h3>
-          <p class="resource-summary">
-            If your idea is still blurry, do not reach for tooling yet. Start with
-            project brief, define milestone one, then ship and review.
-          </p>
-          <div class="resource-callout">
-            <p class="resource-summary">
-              Practical entry path, AI usage pattern, templates, and checklists live in one place.
-            </p>
-            <a class="micro-link" href="/use-it">Open the practical entry path</a>
-          </div>
-        </div>
-      </div>
+  <!-- ══════════════════════════════════════════════════════
+       Case Studies — 3 examples, minimal
+       ══════════════════════════════════════════════════════ -->
+  <section class="cases-section">
+    <h2 class="section-heading">Same method, different terrain.</h2>
+    <p class="section-lede">
+      Grounded works across software, personal brand, small business,
+      and more. Not because it stretches — because the loop doesn't care
+      what domain it's applied to.
+    </p>
+
+    <div class="case-cards">
+      {caseStudies.slice(0, 3).map((item) => (
+        <a class="case-card" href={item.href}>
+          <span class="case-domain">{item.audience}</span>
+          <h3 class="case-title">{item.title}</h3>
+          <p class="case-summary">{item.summary}</p>
+          <span class="case-link-text">Read case</span>
+        </a>
+      ))}
     </div>
+
+    <p class="cases-more">
+      <a href="/case-studies" class="text-link">See all case studies</a>
+    </p>
   </section>
 
-  <section class="section-block">
-    <div class="section-frame">
-      <div class="space-y-3">
-        <p class="section-kicker">Breadth</p>
-        <h2 class="section-title">Same method, different terrain.</h2>
-        <p class="section-note">
-          Grounded is not only for software. The case studies show the same
-          discipline applied to technical tooling, personal brand work, small
-          business execution, and learning paths.
-        </p>
-      </div>
-      <CaseStudyGrid items={caseStudies} />
-    </div>
-  </section>
 </BaseLayout>
+
+<style>
+  /* ═══════════ HERO — editorial split, focused ═══════════ */
+
+  .hero {
+    display: grid;
+    gap: 2.5rem;
+    align-items: end;
+    width: min(100%, 1120px);
+    margin-inline: auto;
+    padding: 4rem 1.5rem 3rem;
+    background: var(--paper);
+  }
+
+  .hero-copy {
+    max-width: 36rem;
+  }
+
+  .hero-kicker {
+    margin: 0 0 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .hero-title {
+    margin: 0 0 1.5rem;
+    max-width: 9ch;
+    font-size: clamp(2.7rem, 6vw, 4.8rem);
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .hero-lede {
+    max-width: 54ch;
+    margin: 0 0 2rem;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  /* ── Buttons ── */
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.9rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--olive);
+    color: oklch(1.0 0 0);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--olive-dark);
+  }
+
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.25rem 0;
+    color: var(--olive);
+    border-bottom: 1px solid color-mix(in oklab, var(--olive) 55%, var(--paper));
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+
+  .btn-link:hover {
+    color: var(--olive-dark);
+    border-color: var(--olive-dark);
+  }
+
+  .btn-primary:focus-visible,
+  .btn-link:focus-visible {
+    outline: 2px solid var(--olive);
+    outline-offset: 3px;
+  }
+
+  .hero-note {
+    max-width: 46ch;
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ── Loop diagram (SVG) ── */
+
+  .hero-visual {
+    display: grid;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .loop-diagram {
+    margin: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--rule);
+  }
+
+  .loop-svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .hero-caption {
+    display: grid;
+    gap: 0.35rem;
+    max-width: 30rem;
+  }
+
+  .hero-caption-label {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .hero-caption-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════ LOOP WALKTHROUGH ═══════════ */
+
+  .loop-walkthrough {
+    width: min(100%, 960px);
+    margin-inline: auto;
+    padding: 4rem 1.5rem 5rem;
+    background: var(--paper);
+  }
+
+  .loop-section-title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .loop-section-lede {
+    max-width: 52ch;
+    margin: 0 auto 3rem;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .loop-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+  }
+
+  .loop-step {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+    justify-items: start;
+  }
+
+  .loop-node {
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--olive);
+    border-radius: 50%;
+    margin-bottom: 0.25rem;
+  }
+
+  .loop-number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--olive);
+    line-height: 1;
+  }
+
+  .loop-label {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .loop-desc {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════ SECTION HEADINGS (shared) ═══════════ */
+
+  .section-heading {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+
+  .section-lede {
+    max-width: 54ch;
+    margin: 0 0 2.5rem;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════ ARTIFACTS SECTION ═══════════ */
+
+  .artifacts-section {
+    width: min(100%, 960px);
+    margin-inline: auto;
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .artifact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .artifact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.4rem 1.2rem 1.2rem;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--olive);
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-top-color 150ms ease;
+    background: var(--paper);
+  }
+
+  .artifact-card:hover {
+    border-top-color: var(--olive-dark);
+  }
+
+  .artifact-card:focus-visible {
+    outline: 2px solid var(--olive);
+    outline-offset: 2px;
+  }
+
+  .artifact-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--olive);
+  }
+
+  .artifact-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .artifact-summary {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .artifact-link {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--olive);
+    transition: color 150ms ease;
+  }
+
+  .artifact-card:hover .artifact-link {
+    color: var(--olive-dark);
+  }
+
+  /* ═══════════ CASE STUDIES SECTION ═══════════ */
+
+  .cases-section {
+    width: min(100%, 960px);
+    margin-inline: auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .case-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.3rem 1.1rem 1.1rem;
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-color 150ms ease;
+    background: var(--paper);
+  }
+
+  .case-card:hover {
+    border-color: var(--olive);
+  }
+
+  .case-card:focus-visible {
+    outline: 2px solid var(--olive);
+    outline-offset: 2px;
+  }
+
+  .case-domain {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .case-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .case-summary {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .case-link-text {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--olive);
+    transition: color 150ms ease;
+  }
+
+  .case-card:hover .case-link-text {
+    color: var(--olive-dark);
+  }
+
+  .cases-more {
+    margin: 2rem 0 0;
+    text-align: center;
+  }
+
+  .text-link {
+    color: var(--olive);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 1.5px solid var(--olive);
+    text-decoration: none;
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+
+  .text-link:hover {
+    color: var(--olive-dark);
+    border-color: var(--olive-dark);
+  }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+
+  @media (min-width: 768px) {
+    .hero {
+      grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+      gap: 3rem;
+      padding-top: 5.5rem;
+    }
+
+    .loop-steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .loop-step {
+      position: relative;
+    }
+
+    .loop-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -1.25rem;
+      top: 0.85rem;
+      font-size: 1.1rem;
+      color: var(--olive);
+      pointer-events: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding-top: 6.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .loop-walkthrough {
+      padding-bottom: 6rem;
+    }
+
+    .artifacts-section {
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+    }
+
+    .cases-section {
+      padding-bottom: 5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero {
+      padding-top: 3rem;
+    }
+
+    .hero-title {
+      max-width: 10ch;
+    }
+
+    .artifact-cards,
+    .case-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ═══════════ REDUCED MOTION ═══════════ */
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-link {
+      transition: none;
+    }
+  }
+</style>

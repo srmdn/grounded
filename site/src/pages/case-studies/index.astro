@@ -20,6 +20,130 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </PageIntro>
 
   <section class="section-block">
-    <CaseStudyGrid items={caseStudies} />
+    <div class="cs-masonry">
+      {caseStudies.map((study, i) => (
+        <a
+          class={`cs-card ${i === 0 ? "cs-card--lead" : ""}`}
+          href={study.href}
+          style={`--card-offset: ${i % 3 === 1 ? "2.5rem" : i % 3 === 2 ? "1.2rem" : "0"}`}
+        >
+          <span class="cs-card__border" />
+          <span class="cs-card__audience">{study.audience}</span>
+          <h3 class="cs-card__title">{study.title}</h3>
+          <p class="cs-card__summary">{study.summary}</p>
+          <span class="cs-card__link">
+            Read case
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
   </section>
 </BaseLayout>
+
+<style>
+  .cs-masonry {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .cs-card {
+    position: relative;
+    display: grid;
+    gap: 0.65rem;
+    align-content: start;
+    padding: 1.4rem 1.25rem 1.25rem;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition:
+      transform var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+  }
+
+  .cs-card__border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    transition: height var(--duration-base) var(--ease-out);
+  }
+
+  .cs-card:hover {
+    transform: translateY(-3px);
+    background: var(--color-surface-raised);
+  }
+
+  .cs-card:hover .cs-card__border {
+    height: 4px;
+  }
+
+  .cs-card__audience {
+    font-size: var(--type-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .cs-card__title {
+    margin: 0;
+    font-size: 1.38rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+  }
+
+  .cs-card__summary {
+    margin: 0;
+    max-width: 44ch;
+    color: var(--color-ink-soft);
+    line-height: 1.72;
+  }
+
+  .cs-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-ink);
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .cs-card:hover .cs-card__link {
+    color: var(--color-primary);
+  }
+
+  /* Lead card: larger, spans full width on mobile */
+  .cs-card--lead {
+    padding: 1.8rem 1.5rem 1.5rem;
+  }
+
+  .cs-card--lead .cs-card__title {
+    font-size: 1.65rem;
+  }
+
+  /* Staggered offsets on desktop */
+  @media (min-width: 768px) {
+    .cs-masonry {
+      grid-template-columns: 1.2fr 0.95fr 1.05fr;
+    }
+
+    .cs-card:nth-child(3n+2) {
+      margin-top: var(--card-offset, 2rem);
+    }
+
+    .cs-card:nth-child(3n+3) {
+      margin-top: var(--card-offset, 1rem);
+    }
+  }
+</style>
