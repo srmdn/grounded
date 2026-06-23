@@ -98,8 +98,6 @@ That could look like:
 
 - a guided web app
 - a structured chat interface
-- a CLI assistant
-- reusable agent prompts and flows
 
 But that is future direction.
 

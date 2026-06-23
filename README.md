@@ -82,13 +82,14 @@ That is future direction, not current identity.
 
 ## Start Here
 
-1. Read [docs/philosophy.md](docs/philosophy.md)
-2. Read [docs/workflow.md](docs/workflow.md)
-3. Read [docs/canonical-guide.md](docs/canonical-guide.md)
-4. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
-5. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
-6. Use [checklists/execution.md](checklists/execution.md) before execution or release
-7. Use [checklists/validation.md](checklists/validation.md) after each milestone
+1. Read [docs/principles.md](docs/principles.md)
+2. Read [docs/philosophy.md](docs/philosophy.md)
+3. Read [docs/workflow.md](docs/workflow.md)
+4. Read [docs/canonical-guide.md](docs/canonical-guide.md)
+5. Use [templates/project-brief.md](templates/project-brief.md) for a new idea
+6. Use [templates/milestone-review.md](templates/milestone-review.md) after shipping a milestone
+7. Use [checklists/execution.md](checklists/execution.md) before execution or release
+8. Use [checklists/validation.md](checklists/validation.md) after each milestone
 
 If you want the shortest path, start with [docs/start-here.md](docs/start-here.md).
 
@@ -104,6 +105,7 @@ If you want the shortest path, start with [docs/start-here.md](docs/start-here.m
 - [docs/start-here.md](docs/start-here.md)
 - [docs/manifest.md](docs/manifest.md)
 - [docs/philosophy.md](docs/philosophy.md)
+- [docs/principles.md](docs/principles.md)
 - [docs/workflow.md](docs/workflow.md)
 - [docs/canonical-guide.md](docs/canonical-guide.md)
 - [docs/who-this-is-for.md](docs/who-this-is-for.md)
@@ -123,12 +125,7 @@ Version 0 is not a big application. It is a clear system that can be read by hum
 
 ## Principles
 
-- clarity before code
-- clarity before scale
-- product pressure over builder ego
-- small milestones over grand plans
-- validation over decoration
-- constraints are part of the design
+Grounded follows a small set of product discipline principles. See [docs/principles.md](docs/principles.md) for the full explanation.
 
 ## Status
 
